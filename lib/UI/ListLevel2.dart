@@ -1,6 +1,7 @@
 import 'package:fffff/UI/Level2.1.dart';
 import 'package:fffff/UI/Level2.2.dart';
 import 'package:fffff/UI/Level2.4.dart';
+import 'package:fffff/UI/Level2.5.dart';
 import 'package:flutter/material.dart';
 
 import 'Level2.3.dart';
@@ -13,7 +14,8 @@ class ListLevel2 extends StatelessWidget {
     Level2dot1(),
     Level2dot2(),
     Level2dot3(),
-    Level2dot4()
+    Level2dot4(),
+    Level2dot5()
   ];
 
  
