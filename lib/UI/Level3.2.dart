@@ -3,39 +3,36 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:fffff/Logic/ListLv.dart';
 
-class Level3dot1 extends StatefulWidget {
- Level3dot1({super.key});
+class Level3dot2 extends StatefulWidget {
+ Level3dot2({super.key});
 
   @override
-  State<Level3dot1> createState() => _Level3dot1State();
+  State<Level3dot2> createState() => _Level3dot2State();
 }
 
-class _Level3dot1State extends State<Level3dot1> {
+class _Level3dot2State extends State<Level3dot2> {
   List<int> num = [];
   TextEditingController numberOfLength = TextEditingController();
 
   int maxNum = 0;
 
   void _incrementSum() {
-    setState(() {
-      // maxNum = LargestNum(num);
       num = List<int>.from(
         numberOfLength.text.split(",").map((e) => int.parse(e))
       ).toList();
       // print(num);
-      maxNum = scSmallest(num);
-    });
+      setState(() {
+        maxNum = largestSubtract(num);
+      });
   }
 
-  int scSmallest(List<int> a) {
-    a.sort(); 
-    int max = a[0];
+  int largestSubtract(List<int> a) { 
+    int max = 0;
+    a.sort();
     for (int i = 0; i < a.length; i++) {
-      if (max < a[i]) {
-        max = a[1];
-      }
+      max = a[i] - a[0];
     }
-    return max;
+     return max;
   }
 
   // input (int length) {
@@ -47,7 +44,7 @@ class _Level3dot1State extends State<Level3dot1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Level 2.1"),
+        title: Text("Level 3.2"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -81,7 +78,7 @@ class _Level3dot1State extends State<Level3dot1> {
                 _incrementSum();
               } 
               , child: Text("Submit")),
-              Text("smallest: $maxNum")
+              Text("MaxSubtract: $maxNum")
         ],
       ),
     );
