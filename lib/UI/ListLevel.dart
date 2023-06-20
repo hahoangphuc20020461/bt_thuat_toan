@@ -1,5 +1,6 @@
 import 'package:fffff/UI/ListLevel1.dart';
 import 'package:fffff/UI/ListLevel2.dart';
+import 'package:fffff/UI/ListLevel3.dart';
 import 'package:flutter/material.dart';
 
 class ListLevel extends StatefulWidget {
@@ -13,7 +14,8 @@ class ListLevel extends StatefulWidget {
 class _ListLevelState extends State<ListLevel> {
   List<Widget>ListallLevel = [
     ListLevel1(),
-    ListLevel2()
+    ListLevel2(),
+    ListLevel3()
   ];
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,15 @@ class _ListLevelState extends State<ListLevel> {
                 )
               ),
               ),
+            ),
+            ElevatedButton(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ListallLevel[2]));
+            }, child: Text("Level 3"),
+            style: ButtonStyle(
+              padding: MaterialStatePropertyAll(
+                EdgeInsets.all(20)
+              )
+            ),
             ),
           ]
             ),
