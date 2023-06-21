@@ -3,34 +3,45 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:fffff/Logic/ListLv.dart';
 
-class Level3dot10 extends StatefulWidget {
- Level3dot10({super.key});
+class Level4dot1 extends StatefulWidget {
+ Level4dot1({super.key});
  
 
   @override
-  State<Level3dot10> createState() => _Level3dot10State();
+  State<Level4dot1> createState() => _Level4dot1State();
 }
 
-class _Level3dot10State extends State<Level3dot10> {
-  //List<int> num = [];
-  TextEditingController lengthOfString = TextEditingController();
+class _Level4dot1State extends State<Level4dot1> {
+  List<int> num = [];
+  TextEditingController numberOfLength = TextEditingController();
 
-  //int maxNum = 0;
-  String s = '';
+  int maxNum = 0;
+  //String s = '';
 
   void _incrementSum() {
-      List<String> str = List<String>.from(lengthOfString.text.split(" "));
-       
+      num = List<int>.from(
+        numberOfLength.text.split(",").map((e) => int.parse(e))
+      ).toList();
       setState(() {
-        s = display(str);
+        maxNum = palindrome(num);
       });
   }
 
-  void swap (String a, String b) {
-    String temp;
-  temp = a;
-  a = b;
-  b = temp;
+  
+  int palindrome (List<int> l) { // bubble sort
+   // List<String> s = [];
+    int count = 0;
+    for (int i = 0; i < l.length - 1; i++) {
+      for (int j = 0; j < l.length - i - 1; j++) {
+          if (l[j] > l[j + 1]) {
+              int temp = l[j];
+              l[j] = l[j+1];
+              l[j+1] = temp;
+              count++;
+          }       
+         }      
+      } 
+    return count;
   }
 
   String display (List<String> l) {
@@ -41,12 +52,11 @@ class _Level3dot10State extends State<Level3dot10> {
   }
 
   
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Level 3.10"),
+        title: Text("Level 4.1"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,7 +79,7 @@ class _Level3dot10State extends State<Level3dot10> {
               textAlign: TextAlign.center,
               ),
               TextFormField(
-                controller: lengthOfString,
+                controller: numberOfLength,
                 textAlign: TextAlign.center,
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -80,7 +90,7 @@ class _Level3dot10State extends State<Level3dot10> {
                 _incrementSum();
               } 
               , child: Text("Submit")),
-              Text("MaxSubtract: $s")
+              Text("MaxSubtract: $maxNum")
         ],
       ),
     );
