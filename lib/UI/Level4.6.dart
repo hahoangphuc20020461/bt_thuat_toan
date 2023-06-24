@@ -3,61 +3,52 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:fffff/Logic/ListLv.dart';
 
-class Level4dot3 extends StatefulWidget {
- Level4dot3({super.key});
+class Level4dot6 extends StatefulWidget {
+ Level4dot6({super.key});
  
 
   @override
-  State<Level4dot3> createState() => _Level4dot3State();
+  State<Level4dot6> createState() => _Level4dot6State();
 }
 
-class _Level4dot3State extends State<Level4dot3> {
+class _Level4dot6State extends State<Level4dot6> {
   //List<int> num = [];
-  TextEditingController lengthOfString = TextEditingController();
+  TextEditingController number2 = TextEditingController();
+  List<int> number = [];
 
   int maxNum = 0;
   //String str = '';
 
   void _incrementSum() {
-      List<String> str = List<String>.from(lengthOfString.text.split(" "));
-      print(subStr(str));
+      number = List<int>.from(
+        number2.text.split(",").map((e) => int.parse(e))
+      ).toList();
+      print(maxSubtr(number));
       setState(() {
-      maxNum = subStr(str).length;
+      maxNum = maxSubtr(number);
       });
   }
 
-  String cl(String a, String b) {
-    String l = "";
-    for (int i = 0; i < a.length; i++) {
-      for (int j = i + 1; j < a.length; j++) {
-        if (b.contains(a.substring(i,j))) {
-          if (j - i > l.length){
-            l = a.substring(i,j);
+  int maxSubtr(List<int> n) {
+    int s = 1;
+    for(int i = 0; i < n.length; i++) {
+      for(int j = i + 1; j < n.length; j++) {
+        for(int z = j + 1; z < n.length; z++) {
+          int sub = (n[i] * n[j] *  n[z]).abs();
+        if (sub > s) {
+          s = sub;
           }
         }
       }
     }
-    return l;
+    return s;
   }
-
-  String subStr(List<String> s) {
-    // List<String> c = [];
-    String longestSubstring = '';
-    longestSubstring = cl(s[0], s[1]);
-    for (int i = 2; i < s.length; i++) {
-      String sub = cl(longestSubstring, s[i]); 
-      if (sub.length < longestSubstring.length) {
-        longestSubstring = sub;
-      }
-    }
-    return longestSubstring;
-  } 
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Level 4.3"),
+        title: Text("Level 4.6"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,16 +66,16 @@ class _Level4dot3State extends State<Level4dot3> {
           //       ),
           //     ),
 
-          Text("Enter your list String",
+          Text("Enter your list number",
               style: TextStyle(fontSize: 20),
               textAlign: TextAlign.center,
               ),
               TextFormField(
-                controller: lengthOfString,
+                controller: number2,
                 textAlign: TextAlign.center,
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Your list string',
+                  hintText: 'Your list number',
                 ),
               ), 
               ElevatedButton(onPressed:(){
