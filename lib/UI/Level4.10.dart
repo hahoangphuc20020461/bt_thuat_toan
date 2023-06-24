@@ -3,14 +3,14 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:fffff/Logic/ListLv.dart';
 
-class Level2dot3 extends StatefulWidget {
- Level2dot3({super.key});
+class Level4dot10 extends StatefulWidget {
+ Level4dot10({super.key});
 
   @override
-  State<Level2dot3> createState() => _Level2dot3State();
+  State<Level4dot10> createState() => _Level4dot10State();
 }
 
-class _Level2dot3State extends State<Level2dot3> {
+class _Level4dot10State extends State<Level4dot10> {
   // List<String> str = [];
   //TextEditingController lengthOfString = TextEditingController();
   TextEditingController Str1 = TextEditingController();
@@ -19,6 +19,7 @@ class _Level2dot3State extends State<Level2dot3> {
 
   //String Stri="";
   String l = "";
+  int k = 0;
 
   void _incrementSum() {
     //List<String> str = List<String>.from(lengthOfString.text.split(" "));
@@ -27,7 +28,8 @@ class _Level2dot3State extends State<Level2dot3> {
       //Stri = str.toString();
       //l = str.last;
       l = cl(Str1.text, Str2.text);
-      print(l);
+      //print(l);
+      k = cl(Str1.text, Str2.text).length;
     });
   }
 
@@ -50,7 +52,7 @@ class _Level2dot3State extends State<Level2dot3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Level 2.2"),
+        title: Text("Level 4.10"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -96,7 +98,8 @@ class _Level2dot3State extends State<Level2dot3> {
                 _incrementSum();
               } 
               , child: Text("Submit")),
-              Text("Longest: $l")
+              Text("Longest: $l"),
+              Text("K: $k")
         ],
       ),
     );
