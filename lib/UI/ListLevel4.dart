@@ -17,6 +17,7 @@ import 'Level4.1.dart';
 import 'Level4.2.dart';
 import 'Level4.3.dart';
 import 'Level4.6.dart';
+import 'Level4.7.dart';
 
 class ListLevel4 extends StatelessWidget {
 
@@ -26,7 +27,8 @@ class ListLevel4 extends StatelessWidget {
     Level4dot1(),
     Level4dot2(),
     Level4dot3(),
-    Level4dot6()
+    Level4dot6(),
+    Level4dot7()
   ];
 
  
