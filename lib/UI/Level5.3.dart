@@ -3,15 +3,15 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:fffff/Logic/ListLv.dart';
 
-class Level5dot1 extends StatefulWidget {
- Level5dot1({super.key});
+class Level5dot3 extends StatefulWidget {
+ Level5dot3({super.key});
  
 
   @override
-  State<Level5dot1> createState() => _Level5dot1State();
+  State<Level5dot3> createState() => _Level5dot3State();
 }
 
-class _Level5dot1State extends State<Level5dot1> {
+class _Level5dot3State extends State<Level5dot3> {
   //List<int> num = [];
   TextEditingController lengthOfString = TextEditingController();
 
@@ -23,15 +23,27 @@ class _Level5dot1State extends State<Level5dot1> {
       //str.sort((a, b) => b.length.compareTo(a.length));
       //print(subStr(str));
       setState(() {
-      l = reverse(str).toString();
+      l = del(str).toString();
       });
   }
   
-  List<dynamic> reverse(List<dynamic> s) {
+  List<dynamic> del(List<dynamic> s) {
     List<dynamic> list = [];
-    for(int i = s.length - 1; i >= 0 && i <= s.length; i--) {
-      list.add(s[i]);
+    for(int i = 0; i < s.length - 1; i++) {
+      for (int j = i +1; j < s.length; j++) {
+        if(s[i] == s[j]) {
+          //s.removeWhere((element) => element == s[j]);
+          s.removeAt(j);
+          i--;
+        }
+      } 
     }
+    // s.reduce((value, element){
+    //   if (value == element) {
+    //     s.removeWhere((element) => element == element);
+    //   }
+    // });
+    list.addAll(s);
     return list;
   }
   
@@ -39,7 +51,7 @@ class _Level5dot1State extends State<Level5dot1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Level 4.7"),
+        title: Text("Level 5.3"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,7 +69,7 @@ class _Level5dot1State extends State<Level5dot1> {
           //       ),
           //     ),
 
-          Text("Enter your list String",
+          Text("Enter your list",
               style: TextStyle(fontSize: 20),
               textAlign: TextAlign.center,
               ),
@@ -66,7 +78,7 @@ class _Level5dot1State extends State<Level5dot1> {
                 textAlign: TextAlign.center,
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Your list string',
+                  hintText: 'Your list',
                 ),
               ), 
               ElevatedButton(onPressed:(){

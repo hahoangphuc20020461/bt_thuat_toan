@@ -21,13 +21,17 @@ import 'Level4.6.dart';
 import 'Level4.7.dart';
 import 'Level4.9.dart';
 import 'Level5.1.dart';
+import 'Level5.2.dart';
+import 'Level5.3.dart';
 
 class ListLevel5 extends StatelessWidget {
 
  ListLevel5({super.key});
 
   List<Widget>ListallLevel5 = [
-    Level5dot1()
+    Level5dot1(),
+    Level5dot2(),
+    Level5dot3()
   ];
 
  
